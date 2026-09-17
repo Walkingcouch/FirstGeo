@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>First Geospatial Pty Ltd | Indigenous Spatial Intelligence | Northern Territory</title>
-  <meta name="description" content="Majority Indigenous-owned geospatial enterprise delivering enterprise LiDAR, high-resolution aerial imaging, and decision-ready spatial intelligence across Northern Australia." />
+  <title>First Geospatial Pty Ltd | Decision-Ready Spatial Intelligence</title>
+  <meta name="description" content="Majority Indigenous-owned Northern Australian geospatial enterprise delivering enterprise airborne LiDAR, high-resolution aerial photogrammetry, and spatial intelligence." />
 
-  <!-- Google Fonts: Editorial Serif + Functional Sans -->
+  <!-- Google Fonts: Syne (Architectural Display), Inter (Clean B2B Body), JetBrains Mono (Telemetry) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -18,23 +18,25 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-            display: ['"Space Grotesk"', 'sans-serif'],
+            display: ['"Syne"', 'sans-serif'],
+            sans: ['"Inter"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
           },
           colors: {
-            // NT Localized Identity Palette
             nt: {
-              green: '#0B3C26',      // Deep Rainforest Green
+              green: '#0B3C26',      // Deep Monsoon Rainforest Green
               greenlight: '#135436', // Mid Rainforest Green
               ochre: '#D4A373',      // Sandstone Ochre
-              ochredark: '#B88656',  // Warm Earth Brown
-              canvas: '#F6F4ED',     // Soft Off-White Base Canvas
-              canvaswhite: '#FFFFFF',
+              ochredark: '#B88656',  // Warm Earth Ochre
+              canvas: '#F8F7F2',     // Soft Off-White Base Canvas
+              white: '#FFFFFF',
               rust: '#A24823',       // Territory Rust Red
+              rusthover: '#85391B',
               spinifex: '#E9D8A6',   // Soft Spinifex Gold
-              charcoal: '#1A1A1A',   // Deep Contrast Text
-              muted: '#525252',      // Secondary Body Text
-              laser: '#0D9488',      // Precision Spectral Cyan / Laser
+              charcoal: '#1A1A1A',   // High-Contrast Technical Text
+              muted: '#4B5563',      // Secondary Body Text
+              border: '#E5E7EB',     // Border Tone
+              laser: '#0D9488',      // Precision Spectral Cyan
             }
           }
         }
@@ -43,129 +45,163 @@
   </script>
 
   <style>
-    /* Subtle topographic contour overlay */
-    .topo-pattern {
-      background-image: radial-gradient(rgba(11, 60, 38, 0.08) 1px, transparent 0);
-      background-size: 24px 24px;
-    }
-    .contour-lines {
-      background-image: repeating-radial-gradient(circle at 50% 50%, transparent 0, transparent 40px, rgba(162, 72, 35, 0.04) 41px, transparent 42px);
+    .grid-bg {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(11, 60, 38, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(11, 60, 38, 0.05) 1px, transparent 1px);
     }
   </style>
 </head>
 <body class="bg-nt-canvas text-nt-charcoal font-sans selection:bg-nt-rust selection:text-white antialiased">
 
-  <!-- Sticky Global Navigation -->
-  <header class="border-b border-nt-charcoal/10 bg-nt-canvas/90 backdrop-blur-md sticky top-0 z-50 transition-all">
+  <!-- Top System Bar -->
+  <div class="bg-nt-green text-nt-spinifex text-[11px] font-mono py-2 px-6 border-b border-nt-greenlight/40">
+    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-3">
+      <div class="flex items-center gap-4">
+        <span class="inline-flex items-center gap-1.5 font-bold">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          OPERATIONAL BASES: DARWIN &amp; KATHERINE, NT
+        </span>
+        <span class="hidden md:inline text-white/40">|</span>
+        <span class="hidden md:inline text-white/80">GEODESY: GDA2020 &bull; AHD</span>
+      </div>
+      <div class="flex items-center gap-4 font-semibold">
+        <span class="text-white/90">51% INDIGENOUS OWNED &amp; CONTROLLED</span>
+        <span class="text-white/40">|</span>
+        <span class="text-emerald-300">CASA REOC ALIGNED</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Global Header -->
+  <header class="border-b border-nt-border bg-white/95 backdrop-blur-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
       
-      <!-- Brand Identity -->
-      <a href="#" class="flex items-center space-x-3 group">
-        <div class="w-4 h-4 rounded-full bg-nt-rust group-hover:scale-110 transition-transform shadow-sm"></div>
+      <a href="#" class="flex items-center space-x-3.5 group">
+        <div class="w-5 h-5 bg-nt-rust group-hover:rotate-45 transition-transform duration-300"></div>
         <div>
-          <span class="font-display font-bold tracking-tight text-lg uppercase text-nt-green block">First Geospatial</span>
-          <span class="text-[10px] tracking-widest uppercase font-semibold text-nt-ochredark block -mt-1">Pty Ltd &bull; Northern Territory</span>
+          <span class="font-display font-bold tracking-tight text-xl text-nt-green uppercase block">First Geospatial</span>
+          <span class="text-[10px] font-mono tracking-widest uppercase font-semibold text-nt-ochredark block -mt-1">Proprietary Limited</span>
         </div>
       </a>
 
-      <!-- Desktop Links -->
-      <nav class="hidden lg:flex items-center space-x-8 text-sm font-semibold text-nt-charcoal/80">
-        <a href="#services" class="hover:text-nt-rust transition">Capabilities</a>
-        <a href="#regions" class="hover:text-nt-rust transition">Regional Footprint</a>
-        <a href="#governance" class="hover:text-nt-rust transition">Cultural Governance</a>
-        <a href="#team" class="hover:text-nt-rust transition">Leadership</a>
-        <a href="#specifications" class="hover:text-nt-rust transition">QA &amp; Security</a>
+      <nav class="hidden lg:flex items-center space-x-8 text-xs uppercase font-bold tracking-wider text-nt-charcoal/80">
+        <a href="#solutions" class="hover:text-nt-rust transition">Solutions</a>
+        <a href="#regions" class="hover:text-nt-rust transition">Territory Footprint</a>
+        <a href="#governance" class="hover:text-nt-rust transition">Data Sovereignty</a>
+        <a href="#leadership" class="hover:text-nt-rust transition">Governance</a>
+        <a href="#specifications" class="hover:text-nt-rust transition">Specifications</a>
       </nav>
 
-      <!-- Badges & Sticky Lead CTA -->
-      <div class="flex items-center space-x-4">
-        <span class="hidden sm:inline-block text-[11px] font-bold tracking-wider px-3 py-1 rounded-full border border-nt-green/20 text-nt-green bg-nt-green/5">
-          51% Indigenous Owned
-        </span>
-        <a href="#contact" class="px-5 py-2.5 rounded-md bg-nt-rust hover:bg-nt-rust/95 text-white font-semibold text-xs tracking-wide uppercase transition shadow-md shadow-nt-rust/20">
-          Request Capability Brief
+      <div class="flex items-center space-x-3">
+        <a href="#contact" class="px-6 py-3 rounded bg-nt-rust hover:bg-nt-rusthover text-white font-bold text-xs uppercase tracking-wider transition shadow-sm">
+          Commission Survey
         </a>
       </div>
 
     </div>
   </header>
 
-  <!-- Problem-Solution Hero Section -->
-  <section class="relative pt-16 pb-20 border-b border-nt-charcoal/10 overflow-hidden topo-pattern">
-    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+  <!-- Hero Section -->
+  <section class="relative pt-12 pb-20 border-b border-nt-border bg-white grid-bg">
+    <div class="max-w-7xl mx-auto px-6">
       
-      <!-- Value Proposition -->
-      <div class="lg:col-span-7">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-nt-spinifex/50 border border-nt-ochre text-nt-charcoal mb-6">
-          <span class="w-2 h-2 rounded-full bg-nt-rust"></span>
-          Darwin &amp; Katherine Bases &bull; Northern Australian Deployment
+      <div class="flex flex-wrap items-center justify-between gap-4 border-b border-nt-border pb-6 mb-10">
+        <div class="flex items-center gap-3">
+          <span class="px-3 py-1 bg-nt-green/10 text-nt-green font-mono text-xs font-bold uppercase rounded">
+            Enterprise Airborne LiDAR &amp; Aerial Photogrammetry
+          </span>
+          <span class="text-xs font-mono text-nt-muted hidden sm:inline">
+            Ref: NT-SPATIAL-2026
+          </span>
+        </div>
+        <div class="text-xs font-mono text-nt-muted">
+          SURVEY GEOGRAPHY: 130°E to 138°E &bull; TOP END TO CENTRAL AUSTRALIA
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-14">
+        <div class="lg:col-span-8">
+          <h1 class="text-4xl sm:text-6xl lg:text-7xl font-display font-extrabold text-nt-green uppercase tracking-tight leading-[0.98] mb-8">
+            Decision-Ready <br/>
+            <span class="text-nt-rust">Spatial Intelligence</span> <br/>
+            Across Country.
+          </h1>
+          <p class="text-lg text-nt-muted font-normal leading-relaxed max-w-2xl">
+            First Geospatial establishes authentic Indigenous-controlled technical capability in Northern Australia. We deploy enterprise LiDAR and high-resolution aerial imaging to produce defensible terrain, cultural baseline, and infrastructure datasets without grant dependency.
+          </p>
         </div>
 
-        <h1 class="text-4xl sm:text-6xl font-display font-bold text-nt-green tracking-tight leading-[1.08] mb-6">
-          Decision-ready spatial intelligence for <span class="text-nt-rust">Northern Australia.</span>
-        </h1>
-
-        <p class="text-lg sm:text-xl text-nt-muted font-normal leading-relaxed mb-8 max-w-2xl">
-          We combine enterprise airborne LiDAR, calibrated photogrammetry, and rigorous cultural data sovereignty to deliver defensible spatial datasets across Country, environmental research, and infrastructure.
-        </p>
-
-        <div class="flex flex-wrap items-center gap-4">
-          <a href="#contact" class="px-7 py-3.5 rounded-md bg-nt-green hover:bg-nt-greenlight text-white font-semibold text-sm transition shadow-lg shadow-nt-green/20">
-            Commission a Survey
-          </a>
-          <a href="#services" class="px-7 py-3.5 rounded-md border border-nt-charcoal/20 bg-white hover:bg-nt-canvas text-nt-charcoal font-semibold text-sm transition">
-            Explore Data Outputs
-          </a>
-        </div>
-
-        <!-- Trust Badges Under Hero -->
-        <div class="grid grid-cols-3 gap-6 pt-10 mt-10 border-t border-nt-charcoal/10 max-w-lg">
-          <div>
-            <span class="block text-2xl font-bold font-display text-nt-green">51%</span>
-            <span class="text-xs text-nt-muted uppercase font-medium tracking-wide">Indigenous Controlled</span>
+        <div class="lg:col-span-4 bg-nt-canvas p-6 rounded-lg border border-nt-border space-y-5">
+          <span class="text-[11px] font-mono font-bold uppercase tracking-wider text-nt-rust block">
+            Operational Parameters
+          </span>
+          <div class="border-t border-nt-border pt-3">
+            <span class="text-xs font-mono text-nt-muted block">Point Density</span>
+            <span class="text-xl font-display font-bold text-nt-green">100+ points / m²</span>
           </div>
-          <div>
-            <span class="block text-2xl font-bold font-display text-nt-rust">100%</span>
-            <span class="text-xs text-nt-muted uppercase font-medium tracking-wide">Sovereign Onshore Data</span>
+          <div class="border-t border-nt-border pt-3">
+            <span class="text-xs font-mono text-nt-muted block">Ground Sample Distance</span>
+            <span class="text-xl font-display font-bold text-nt-green">&le; 2.0 cm GSD</span>
           </div>
-          <div>
-            <span class="block text-2xl font-bold font-display text-nt-greenlight">CASA</span>
-            <span class="text-xs text-nt-muted uppercase font-medium tracking-wide">Commercial Operations</span>
+          <div class="border-t border-nt-border pt-3">
+            <span class="text-xs font-mono text-nt-muted block">Cultural Governance</span>
+            <span class="text-base font-display font-bold text-nt-rust">Traditional Owner Authority</span>
+          </div>
+          <div class="border-t border-nt-border pt-4">
+            <a href="#contact" class="block w-full text-center py-3 bg-nt-green hover:bg-nt-greenlight text-white font-bold text-xs uppercase tracking-wider transition rounded">
+              Request Project Estimate
+            </a>
           </div>
         </div>
       </div>
 
-      <!-- Hero Visual: Real Northern Territory Landscape with Live Scan Interface -->
-      <div class="lg:col-span-5 relative">
-        <div class="relative rounded-2xl overflow-hidden border border-nt-charcoal/10 shadow-2xl bg-white p-2">
-          <div class="relative rounded-xl overflow-hidden h-[460px]">
-            <!-- Authentic Nitmiluk / Katherine Gorge NT Landscape -->
-            <img 
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Nitmiluk_Katherine_Gorge.jpg/1280px-Nitmiluk_Katherine_Gorge.jpg" 
-              alt="Katherine Gorge / Nitmiluk National Park, Northern Territory" 
-              class="w-full h-full object-cover"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-nt-green/80 via-transparent to-black/20"></div>
+      <!-- Interactive Spatial HUD Window -->
+      <div class="rounded-xl overflow-hidden border border-nt-border shadow-xl bg-nt-charcoal">
+        <div class="bg-stone-900 px-5 py-3 border-b border-stone-800 flex flex-wrap justify-between items-center gap-4 text-xs font-mono">
+          <div class="flex items-center gap-3 text-stone-300">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+            <span>TRANSECT: NITMILUK / KATHERINE GORGE CORRIDOR</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <button id="btnRgb" class="px-3 py-1 bg-nt-rust text-white font-bold rounded text-[11px]">
+              LAYER 1: RGB ORTHOMOSAIC
+            </button>
+            <button id="btnDtm" class="px-3 py-1 bg-stone-800 text-stone-300 hover:text-white font-bold rounded text-[11px]">
+              LAYER 2: CLASSIFIED BARE-EARTH (DTM)
+            </button>
+          </div>
+        </div>
 
-            <!-- Simulated Laser Ground Scan Reticle -->
-            <div class="absolute inset-x-0 top-1/2 h-0.5 bg-nt-laser shadow-[0_0_12px_#0d9488]"></div>
-
-            <!-- Floating Data Readout Badge -->
-            <div class="absolute top-4 left-4 right-4 bg-white/95 backdrop-blur-md p-3.5 rounded-lg border border-nt-charcoal/10 shadow-sm flex items-center justify-between">
-              <div>
-                <span class="text-[10px] font-mono uppercase font-bold text-nt-laser block">Airborne Sensor Stream</span>
-                <span class="text-xs font-bold text-nt-green">Katherine River Gorge Transect</span>
+        <div class="relative h-[480px] overflow-hidden">
+          <img 
+            id="viewImage"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Nitmiluk_Katherine_Gorge.jpg/1280px-Nitmiluk_Katherine_Gorge.jpg" 
+            alt="Katherine Gorge Nitmiluk aerial landscape"
+            class="w-full h-full object-cover filter contrast-125 transition-all duration-500"
+          />
+          
+          <div class="absolute inset-0 pointer-events-none border-[16px] border-black/20 flex flex-col justify-between p-6 font-mono text-[11px] text-white/80">
+            <div class="flex justify-between items-start">
+              <div class="bg-black/70 backdrop-blur-sm p-3 rounded border border-white/10">
+                <p class="text-emerald-400 font-bold">LAT: 14°18'42"S &bull; LON: 132°25'24"E</p>
+                <p class="text-white/60">ALT: 180m AGL &bull; SENSOR: DUAL AP-LIDAR/RGB</p>
               </div>
-              <span class="text-[10px] font-mono font-bold bg-nt-spinifex/60 px-2 py-0.5 rounded border border-nt-ochre text-nt-charcoal">
-                RTK FIXED
+              <div class="bg-black/70 backdrop-blur-sm px-3 py-1 rounded border border-white/10 text-nt-spinifex">
+                MODE: SURVEY CALIBRATED
+              </div>
+            </div>
+            
+            <div class="flex justify-between items-end">
+              <div class="bg-black/70 backdrop-blur-sm p-3 rounded border border-white/10 max-w-sm">
+                <p class="font-bold text-white mb-0.5" id="hudTitle">Photogrammetric High-Res Surface</p>
+                <p class="text-[10px] text-white/70" id="hudDesc">Resolving micro-fractures, rock strata, and vegetative condition at sub-centimetre accuracy.</p>
+              </div>
+              <span class="font-mono text-xs bg-nt-rust text-white px-3 py-1 rounded font-bold">
+                100% ONSHORE STORAGE
               </span>
             </div>
-
-            <!-- Telemetry Footer inside image card -->
-            <div class="absolute bottom-4 left-4 right-4 text-white">
-              <p class="text-xs font-mono opacity-80 mb-1">Grid: MGA Zone 53 &bull; GDA2020</p>
-              <p class="text-sm font-semibold">Penetrating rugged escarpment terrain and dense riparian canopy.</p>
-            </div>
           </div>
         </div>
       </div>
@@ -173,352 +209,364 @@
     </div>
   </section>
 
-  <!-- Regional Operational Footprint (NT Tourism / Park Inspired Regional Grid) -->
-  <section id="regions" class="py-20 bg-white border-b border-nt-charcoal/10">
+  <!-- Solutions Section -->
+  <section id="solutions" class="py-24 bg-nt-canvas border-b border-nt-border">
     <div class="max-w-7xl mx-auto px-6">
-      
-      <div class="max-w-3xl mb-12">
-        <span class="text-xs font-bold uppercase tracking-widest text-nt-rust block mb-2">Service Geography</span>
-        <h2 class="text-3xl font-display font-bold text-nt-green">Built for Northern Australia's Toughest Corridors</h2>
-        <p class="text-nt-muted text-base mt-2">
-          From the monsoonal Top End floodplains to the arid ranges of Central Australia, we mobilize self-contained field crews equipped for isolated terrain and extreme conditions.
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div>
+          <span class="text-xs font-mono font-bold uppercase tracking-widest text-nt-rust block mb-2">Capability Matrix</span>
+          <h2 class="text-3xl sm:text-5xl font-display font-bold text-nt-green uppercase tracking-tight">
+            Turnkey Spatial Products
+          </h2>
+        </div>
+        <p class="text-sm text-nt-muted max-w-md">
+          We do not bill generic drone day-rates. We quote, manage, and deliver rigorous spatial intelligence packages meeting Australian civil and geodetic standards.
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        
-        <!-- Region 1: Top End / Darwin -->
-        <div class="group rounded-xl border border-nt-charcoal/10 bg-nt-canvas/40 overflow-hidden hover:shadow-lg transition-all duration-300">
-          <div class="h-48 overflow-hidden relative">
-            <img 
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Kakadu_Yellow_Water.jpg/1280px-Kakadu_Yellow_Water.jpg" 
-              alt="Yellow Water Billabong, Kakadu Top End Northern Territory" 
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-            <span class="absolute top-3 left-3 bg-nt-green text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded">
-              Top End &amp; Darwin
-            </span>
-          </div>
-          <div class="p-6">
-            <h3 class="text-lg font-bold text-nt-green mb-2">Monsoonal Wetlands &amp; Coast</h3>
-            <p class="text-sm text-nt-muted leading-relaxed mb-4">
-              Airborne LiDAR ground classification penetrating wet-season grasses, tidal mangroves, and seasonal floodplains across Kakadu, Arnhem Land, and Darwin rural areas.
-            </p>
-            <span class="text-xs font-semibold text-nt-rust">&bull; Hydrology &bull; Mangrove Canopy &bull; Asset Inundation</span>
-          </div>
-        </div>
-
-        <!-- Region 2: Katherine & Big Rivers -->
-        <div class="group rounded-xl border border-nt-charcoal/10 bg-nt-canvas/40 overflow-hidden hover:shadow-lg transition-all duration-300">
-          <div class="h-48 overflow-hidden relative">
-            <img 
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/KatherineGorge1.jpg/1280px-KatherineGorge1.jpg" 
-              alt="Katherine Gorge rocky sandstone escarpment" 
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-            <span class="absolute top-3 left-3 bg-nt-rust text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded">
-              Katherine &amp; Big Rivers
-            </span>
-          </div>
-          <div class="p-6">
-            <h3 class="text-lg font-bold text-nt-green mb-2">Escarpment &amp; River Basins</h3>
-            <p class="text-sm text-nt-muted leading-relaxed mb-4">
-              High-resolution 3D photogrammetry and terrain modelling along rugged gorges, remote cattle stations, and key transport infrastructure corridors.
-            </p>
-            <span class="text-xs font-semibold text-nt-rust">&bull; Corridor Mapping &bull; Cultural Heritage Sites &bull; Gully Erosion</span>
-          </div>
-        </div>
-
-        <!-- Region 3: Central Australia / Barkly -->
-        <div class="group rounded-xl border border-nt-charcoal/10 bg-nt-canvas/40 overflow-hidden hover:shadow-lg transition-all duration-300">
-          <div class="h-48 overflow-hidden relative">
-            <img 
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/MacDonnell_Ranges_2004.jpg/1280px-MacDonnell_Ranges_2004.jpg" 
-              alt="West MacDonnell Ranges red center near Alice Springs" 
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-            <span class="absolute top-3 left-3 bg-nt-ochredark text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded">
-              Central Australia &amp; Barkly
-            </span>
-          </div>
-          <div class="p-6">
-            <h3 class="text-lg font-bold text-nt-green mb-2">Arid Ranges &amp; Pastoral Lands</h3>
-            <p class="text-sm text-nt-muted leading-relaxed mb-4">
-              Large-area multispectral and elevation baselines mapping spinifex plains, pastoral lease conditions, and mining leases from Tennant Creek to Alice Springs.
-            </p>
-            <span class="text-xs font-semibold text-nt-rust">&bull; Mineral Tenements &bull; Vegetation Structure &bull; Volumetrics</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Three-Tiered Commercial Services Grid -->
-  <section id="services" class="py-20 border-b border-nt-charcoal/10 bg-nt-canvas topo-pattern">
-    <div class="max-w-7xl mx-auto px-6">
-      
-      <div class="text-center max-w-2xl mx-auto mb-16">
-        <span class="text-xs font-bold uppercase tracking-widest text-nt-rust block mb-2">Commercial Delivery</span>
-        <h2 class="text-3xl sm:text-4xl font-display font-bold text-nt-green">Decision-Ready Spatial Products</h2>
-        <p class="text-nt-muted text-sm mt-3">We quote complete turnkey field mobilisations and spatial deliverables, not simple drone day-rates.</p>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        
-        <!-- Tier 1: LiDAR Terrain Intelligence -->
-        <div class="p-8 rounded-xl border border-nt-charcoal/10 bg-white shadow-sm flex flex-col justify-between">
+        <!-- Package 1 -->
+        <div class="bg-white p-8 rounded-xl border border-nt-border flex flex-col justify-between shadow-sm">
           <div>
-            <div class="w-12 h-12 rounded-lg bg-nt-green/10 text-nt-green flex items-center justify-center font-display font-bold text-lg mb-6">
-              01
+            <div class="flex justify-between items-start mb-6">
+              <span class="font-mono text-xs font-bold px-2.5 py-1 rounded bg-nt-green/10 text-nt-green">CAP-01</span>
+              <span class="font-mono text-[11px] text-nt-muted">MULTI-RETURN</span>
             </div>
-            <h3 class="text-xl font-bold text-nt-green mb-2">Airborne LiDAR &amp; Elevation</h3>
-            <p class="text-sm text-nt-muted leading-relaxed mb-6">
-              Calibrated laser pulses capturing ground elevation beneath dense monsoonal tree canopies, scrub, and tall grassland.
+            <h3 class="text-2xl font-display font-bold text-nt-green mb-3 uppercase">Airborne LiDAR</h3>
+            <p class="text-xs text-nt-muted leading-relaxed mb-6 font-normal">
+              Active laser scanning penetrating dense tropical canopies, wet-season grasses, and escarpments to reveal actual ground elevation and vertical structure.
             </p>
-            <ul class="space-y-3 text-xs font-medium text-nt-charcoal border-t border-nt-charcoal/10 pt-4 mb-8">
-              <li class="flex items-center gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-nt-rust"></span> Classified point clouds (.LAS / .LAZ)
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-nt-rust"></span> Digital Terrain (DTM) &amp; Surface (DSM) Models
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-nt-rust"></span> Canopy height &amp; fuel-load stratification
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-nt-rust"></span> Repeat survey temporal change detection
-              </li>
-            </ul>
+            <div class="space-y-2.5 font-mono text-xs text-nt-charcoal border-t border-nt-border pt-6 mb-8">
+              <div class="flex items-center justify-between">
+                <span class="text-nt-muted">Output:</span>
+                <span class="font-semibold">Classified .LAS / .LAZ</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-nt-muted">Elevation:</span>
+                <span class="font-semibold">DTM / DSM Grids (0.5m)</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-nt-muted">Analysis:</span>
+                <span class="font-semibold">Canopy Fuel / Strata</span>
+              </div>
+            </div>
           </div>
-          <a href="#contact" class="block text-center py-3 rounded border border-nt-green text-nt-green font-semibold text-xs hover:bg-nt-green hover:text-white transition uppercase tracking-wider">
-            Quote LiDAR Survey
+          <a href="#contact" class="block w-full text-center py-3 rounded border border-nt-green text-nt-green font-bold text-xs uppercase tracking-wider hover:bg-nt-green hover:text-white transition">
+            Scope LiDAR Project
           </a>
         </div>
 
-        <!-- Tier 2: Aerial Photogrammetry & Reality Mesh -->
-        <div class="p-8 rounded-xl border-2 border-nt-rust bg-white shadow-md flex flex-col justify-between relative">
-          <span class="absolute -top-3 right-6 bg-nt-rust text-white text-[10px] font-bold uppercase tracking-widest px-3 py-0.5 rounded-full">
-            High Resolution
+        <!-- Package 2 -->
+        <div class="bg-white p-8 rounded-xl border-2 border-nt-rust flex flex-col justify-between shadow-md relative">
+          <span class="absolute -top-3 right-6 bg-nt-rust text-white text-[10px] font-mono font-bold uppercase tracking-widest px-3 py-0.5 rounded">
+            High Demand
           </span>
           <div>
-            <div class="w-12 h-12 rounded-lg bg-nt-rust/10 text-nt-rust flex items-center justify-center font-display font-bold text-lg mb-6">
-              02
+            <div class="flex justify-between items-start mb-6">
+              <span class="font-mono text-xs font-bold px-2.5 py-1 rounded bg-nt-rust/10 text-nt-rust">CAP-02</span>
+              <span class="font-mono text-[11px] text-nt-muted">SUB-CENTIMETRE</span>
             </div>
-            <h3 class="text-xl font-bold text-nt-green mb-2">Photogrammetry &amp; 3D Imaging</h3>
-            <p class="text-sm text-nt-muted leading-relaxed mb-6">
-              Sub-centimetre RGB aerial mapping delivering georeferenced orthomosaics and textured 3D reality meshes.
+            <h3 class="text-2xl font-display font-bold text-nt-green mb-3 uppercase">Photogrammetry</h3>
+            <p class="text-xs text-nt-muted leading-relaxed mb-6 font-normal">
+              High-resolution calibrated RGB aerial photography producing geometrically corrected orthomosaics and millimetre-precision 3D reality meshes.
             </p>
-            <ul class="space-y-3 text-xs font-medium text-nt-charcoal border-t border-nt-charcoal/10 pt-4 mb-8">
-              <li class="flex items-center gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-nt-green"></span> Geotiff Orthomosaics with sub-2cm GSD
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-nt-green"></span> Textured 3D Reality Meshes (OBJ / 3MX)
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-nt-green"></span> Stockpile, pit, and gully volumetrics
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-nt-green"></span> Asset condition &amp; progress baselines
-              </li>
-            </ul>
+            <div class="space-y-2.5 font-mono text-xs text-nt-charcoal border-t border-nt-border pt-6 mb-8">
+              <div class="flex items-center justify-between">
+                <span class="text-nt-muted">Imagery:</span>
+                <span class="font-semibold">GeoTIFF Orthophoto</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-nt-muted">Resolution:</span>
+                <span class="font-semibold">&le; 2cm Ground Pixel</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-nt-muted">3D Model:</span>
+                <span class="font-semibold">OBJ / 3MX Reality Mesh</span>
+              </div>
+            </div>
           </div>
-          <a href="#contact" class="block text-center py-3 rounded bg-nt-rust text-white font-semibold text-xs hover:bg-nt-rust/90 transition uppercase tracking-wider">
-            Quote Imaging Package
+          <a href="#contact" class="block w-full text-center py-3 rounded bg-nt-rust hover:bg-nt-rusthover text-white font-bold text-xs uppercase tracking-wider transition">
+            Scope Imaging Project
           </a>
         </div>
 
-        <!-- Tier 3: Cultural & Research Enterprise -->
-        <div class="p-8 rounded-xl border border-nt-charcoal/10 bg-white shadow-sm flex flex-col justify-between">
+        <!-- Package 3 -->
+        <div class="bg-white p-8 rounded-xl border border-nt-border flex flex-col justify-between shadow-sm">
           <div>
-            <div class="w-12 h-12 rounded-lg bg-nt-ochre/20 text-nt-ochredark flex items-center justify-center font-display font-bold text-lg mb-6">
-              03
+            <div class="flex justify-between items-start mb-6">
+              <span class="font-mono text-xs font-bold px-2.5 py-1 rounded bg-nt-ochredark/15 text-nt-ochredark">CAP-03</span>
+              <span class="font-mono text-[11px] text-nt-muted">CULTURAL &bull; SCIENTIFIC</span>
             </div>
-            <h3 class="text-xl font-bold text-nt-green mb-2">Country &amp; Research Mapping</h3>
-            <p class="text-sm text-nt-muted leading-relaxed mb-6">
-              Specialized data collection designed around Traditional Owner authority, Indigenous Ranger groups, and academic research institutes.
+            <h3 class="text-2xl font-display font-bold text-nt-green mb-3 uppercase">Country Mapping</h3>
+            <p class="text-xs text-nt-muted leading-relaxed mb-6 font-normal">
+              Culturally governed field capture for Land Councils, Traditional Owners, and academic researchers (CDU/CSIRO) mapping ecological and cultural baselines.
             </p>
-            <ul class="space-y-3 text-xs font-medium text-nt-charcoal border-t border-nt-charcoal/10 pt-4 mb-8">
-              <li class="flex items-center gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-nt-ochredark"></span> Culturally restricted data tiering
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-nt-ochredark"></span> On-Country Indigenous field participation
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-nt-ochredark"></span> Research trial datasets (CDU/CSIRO aligned)
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-nt-ochredark"></span> Sovereign data archiving in Australia
-              </li>
-            </ul>
+            <div class="space-y-2.5 font-mono text-xs text-nt-charcoal border-t border-nt-border pt-6 mb-8">
+              <div class="flex items-center justify-between">
+                <span class="text-nt-muted">Authority:</span>
+                <span class="font-semibold">Traditional Owner Governed</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-nt-muted">Security:</span>
+                <span class="font-semibold">Tiered ICIP Classification</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-nt-muted">Fieldwork:</span>
+                <span class="font-semibold">Indigenous Ranger Crews</span>
+              </div>
+            </div>
           </div>
-          <a href="#contact" class="block text-center py-3 rounded border border-nt-green text-nt-green font-semibold text-xs hover:bg-nt-green hover:text-white transition uppercase tracking-wider">
-            Partner on Country
+          <a href="#contact" class="block w-full text-center py-3 rounded border border-nt-green text-nt-green font-bold text-xs uppercase tracking-wider hover:bg-nt-green hover:text-white transition">
+            Engage on Country
           </a>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- Cultural Governance Framework (Ethical Adventures NT / Land Council Model) -->
-  <section id="governance" class="py-20 bg-white border-b border-nt-charcoal/10">
+  <!-- Regional Footprint -->
+  <section id="regions" class="py-24 bg-white border-b border-nt-border">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        
-        <div class="lg:col-span-6">
-          <span class="text-xs font-bold uppercase tracking-widest text-nt-rust block mb-2">Respect for Country</span>
-          <h2 class="text-3xl font-display font-bold text-nt-green mb-6">
-            Cultural Authority &amp; Indigenous Data Sovereignty
-          </h2>
-          <p class="text-nt-muted text-sm leading-relaxed mb-4">
-            First Geospatial does not treat Indigenous ownership as automatic cultural authority over another group's Country. We design field workflows around the explicit permissions of local Traditional Owners, Land Councils, and authorized custodians.
-          </p>
-          <p class="text-nt-muted text-sm leading-relaxed mb-6">
-            Cultural knowledge and sacred geography remain strictly classified under client-approved access permissions. The Company asserts no ownership over cultural heritage simply because we collected or processed the raw spatial points.
-          </p>
-          
-          <div class="space-y-3">
-            <div class="p-3.5 rounded-lg bg-nt-canvas border border-nt-charcoal/10 flex items-start gap-3">
-              <span class="text-nt-rust font-bold text-sm">01</span>
-              <p class="text-xs text-nt-charcoal font-medium">Authorised land access permits and cultural briefing prior to mobilization.</p>
-            </div>
-            <div class="p-3.5 rounded-lg bg-nt-canvas border border-nt-charcoal/10 flex items-start gap-3">
-              <span class="text-nt-rust font-bold text-sm">02</span>
-              <p class="text-xs text-nt-charcoal font-medium">Tiered data classification preventing unauthorized release of culturally sensitive sites.</p>
-            </div>
-            <div class="p-3.5 rounded-lg bg-nt-canvas border border-nt-charcoal/10 flex items-start gap-3">
-              <span class="text-nt-rust font-bold text-sm">03</span>
-              <p class="text-xs text-nt-charcoal font-medium">Direct training and paid field participation for local rangers on their own Country.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="lg:col-span-6">
-          <div class="rounded-2xl border border-nt-charcoal/10 bg-nt-canvas p-8 relative overflow-hidden">
-            <h3 class="text-lg font-bold font-display text-nt-green mb-4">Workforce Staging Model</h3>
-            <p class="text-xs text-nt-muted mb-6">
-              Our priority is creating authentic, progressive technical careers for Indigenous Territorians in robotics, RPAS flight operations, and GIS processing.
-            </p>
-
-            <div class="space-y-4">
-              <div class="border-l-2 border-nt-rust pl-4">
-                <span class="text-[11px] font-bold text-nt-rust uppercase">Phase 1 &bull; Field Operations</span>
-                <p class="text-xs text-nt-charcoal mt-0.5">Paid on-Country field capture, ground control GNSS setup, and flight safety crew.</p>
-              </div>
-              <div class="border-l-2 border-nt-ochredark pl-4">
-                <span class="text-[11px] font-bold text-nt-ochredark uppercase">Phase 2 &bull; RPAS Licensing</span>
-                <p class="text-xs text-nt-charcoal mt-0.5">Commercial CASA RePL (Remote Pilot Licence) sponsorship and multi-rotor flight certifications.</p>
-              </div>
-              <div class="border-l-2 border-nt-green pl-4">
-                <span class="text-[11px] font-bold text-nt-green uppercase">Phase 3 &bull; Geospatial Leadership</span>
-                <p class="text-xs text-nt-charcoal mt-0.5">LiDAR post-processing, 3D point cloud classification, and project management roles.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Leadership & Ownership Bios (Clean Silhouettes & Authentic Backgrounds) -->
-  <section id="team" class="py-20 border-b border-nt-charcoal/10 bg-nt-canvas">
-    <div class="max-w-7xl mx-auto px-6">
-      
-      <div class="text-center max-w-2xl mx-auto mb-16">
-        <span class="text-xs font-bold uppercase tracking-widest text-nt-rust block mb-2">Governance &amp; Founders</span>
-        <h2 class="text-3xl font-display font-bold text-nt-green">Leadership Team</h2>
-        <p class="text-nt-muted text-sm mt-2">Authentic 51% Indigenous majority control supported by seasoned operational and commercial leads.</p>
+      <div class="max-w-2xl mb-16">
+        <span class="text-xs font-mono font-bold uppercase tracking-widest text-nt-rust block mb-2">Service Geography</span>
+        <h2 class="text-3xl sm:text-4xl font-display font-bold text-nt-green uppercase tracking-tight">
+          Mobilising Across Northern Australia
+        </h2>
+        <p class="text-sm text-nt-muted mt-3">
+          We maintain field logistics, rugged off-grid power, and dual-frequency GNSS bases to mobilize across three distinct Northern Territory zones.
+        </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="border border-nt-border rounded-lg overflow-hidden bg-nt-canvas">
+          <div class="h-56 relative overflow-hidden">
+            <img 
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Kakadu_Yellow_Water.jpg/1280px-Kakadu_Yellow_Water.jpg" 
+              alt="Kakadu Yellow Water billabong Top End Northern Territory" 
+              class="w-full h-full object-cover"
+            />
+            <span class="absolute bottom-3 left-3 bg-nt-green text-white font-mono text-[10px] font-bold px-2.5 py-1 rounded">
+              ZONE 01 &bull; TOP END &amp; DARWIN
+            </span>
+          </div>
+          <div class="p-6">
+            <h4 class="font-display font-bold text-lg text-nt-green mb-2 uppercase">Monsoonal Wetlands &amp; Coast</h4>
+            <p class="text-xs text-nt-muted leading-relaxed mb-4">
+              LiDAR ground penetration through wet-season growth, coastal mangroves, and tidal channels across East Arnhem, Kakadu, and Darwin rural corridors.
+            </p>
+            <div class="text-[11px] font-mono text-nt-rust font-bold">
+              &bull; Mangrove Canopy &bull; Tidal Inundation &bull; Cyclone Baselines
+            </div>
+          </div>
+        </div>
+
+        <div class="border border-nt-border rounded-lg overflow-hidden bg-nt-canvas">
+          <div class="h-56 relative overflow-hidden">
+            <img 
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/KatherineGorge1.jpg/1280px-KatherineGorge1.jpg" 
+              alt="Katherine Gorge red sandstone escarpment" 
+              class="w-full h-full object-cover"
+            />
+            <span class="absolute bottom-3 left-3 bg-nt-rust text-white font-mono text-[10px] font-bold px-2.5 py-1 rounded">
+              ZONE 02 &bull; KATHERINE &amp; BIG RIVERS
+            </span>
+          </div>
+          <div class="p-6">
+            <h4 class="font-display font-bold text-lg text-nt-green mb-2 uppercase">Gorges, Escarpment &amp; Basins</h4>
+            <p class="text-xs text-nt-muted leading-relaxed mb-4">
+              Steep sandstone escarpment scanning, pastoral station volumetrics, gully erosion mapping, and infrastructure corridors along the Stuart Highway.
+            </p>
+            <div class="text-[11px] font-mono text-nt-rust font-bold">
+              &bull; Rock Art Shelters &bull; Corridor Mapping &bull; Station Infrastructure
+            </div>
+          </div>
+        </div>
+
+        <div class="border border-nt-border rounded-lg overflow-hidden bg-nt-canvas">
+          <div class="h-56 relative overflow-hidden">
+            <img 
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/MacDonnell_Ranges_2004.jpg/1280px-MacDonnell_Ranges_2004.jpg" 
+              alt="MacDonnell Ranges Alice Springs Central Australia" 
+              class="w-full h-full object-cover"
+            />
+            <span class="absolute bottom-3 left-3 bg-nt-ochredark text-white font-mono text-[10px] font-bold px-2.5 py-1 rounded">
+              ZONE 03 &bull; CENTRAL AUSTRALIA &amp; BARKLY
+            </span>
+          </div>
+          <div class="p-6">
+            <h4 class="font-display font-bold text-lg text-nt-green mb-2 uppercase">Arid Ranges &amp; Tenements</h4>
+            <p class="text-xs text-nt-muted leading-relaxed mb-4">
+              Extensive rangeland surveys, mining tenement topographic updates, and spinifex vegetation structuring from Tennant Creek to Alice Springs.
+            </p>
+            <div class="text-[11px] font-mono text-nt-rust font-bold">
+              &bull; Mining Tenements &bull; Pastoral Rangelands &bull; Volumetrics
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cultural Data Sovereignty -->
+  <section id="governance" class="py-20 bg-nt-green text-white border-b border-nt-greenlight">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div class="lg:col-span-6">
+        <span class="text-xs font-mono font-bold uppercase tracking-widest text-nt-spinifex block mb-3">
+          Indigenous Data Governance
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-display font-bold mb-6 uppercase leading-tight">
+          Cultural Authority &amp; Data Sovereignty
+        </h2>
+        <p class="text-sm text-white/80 leading-relaxed mb-6 font-light">
+          First Geospatial recognises that Indigenous ownership of our company does not grant automatic cultural authority over another group's Country. We design field capture and data handling around the formal authority of Traditional Owners and Land Councils.
+        </p>
+        <p class="text-sm text-white/80 leading-relaxed font-light mb-8">
+          All cultural data remains under the ownership of the traditional custodians. First Geospatial asserts no claim over cultural heritage or restricted knowledge simply because our sensors recorded the data points.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-mono text-xs">
+          <div class="p-4 rounded bg-white/10 border border-white/15">
+            <span class="block text-nt-spinifex font-bold text-sm mb-1">01. Tiered Access</span>
+            Restricted site coordinates shielded from public or commercial release.
+          </div>
+          <div class="p-4 rounded bg-white/10 border border-white/15">
+            <span class="block text-nt-spinifex font-bold text-sm mb-1">02. Ranger Pathways</span>
+            Paid field crew and training opportunities for local custodians on Country.
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-6 bg-white text-nt-charcoal p-8 sm:p-10 rounded-xl shadow-2xl border border-nt-border">
+        <span class="text-xs font-mono font-bold text-nt-rust uppercase block mb-1">Capacity Building</span>
+        <h3 class="text-2xl font-display font-bold text-nt-green uppercase mb-6">Indigenous Technical Staging</h3>
         
+        <div class="space-y-6">
+          <div class="flex gap-4">
+            <span class="font-mono font-bold text-nt-rust text-lg">01</span>
+            <div>
+              <h5 class="font-bold text-sm text-nt-green uppercase">Field Operations &amp; GNSS Control</h5>
+              <p class="text-xs text-nt-muted mt-1">Paid on-Country field participation, flight safety crew, and ground-control base positioning.</p>
+            </div>
+          </div>
+          <div class="flex gap-4 border-t border-nt-border pt-4">
+            <span class="font-mono font-bold text-nt-ochredark text-lg">02</span>
+            <div>
+              <h5 class="font-bold text-sm text-nt-green uppercase">CASA RPAS Licensing</h5>
+              <p class="text-xs text-nt-muted mt-1">Direct company sponsorship for commercial Remote Pilot Licences (RePL) and field maintenance.</p>
+            </div>
+          </div>
+          <div class="flex gap-4 border-t border-nt-border pt-4">
+            <span class="font-mono font-bold text-nt-green text-lg">03</span>
+            <div>
+              <h5 class="font-bold text-sm text-nt-green uppercase">Geospatial Processing Leadership</h5>
+              <p class="text-xs text-nt-muted mt-1">LiDAR point cloud classification, QA/QC verification, and project management roles.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Executive Leadership -->
+  <section id="leadership" class="py-24 bg-white border-b border-nt-border">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-2xl mb-16">
+        <span class="text-xs font-mono font-bold uppercase tracking-widest text-nt-rust block mb-2">Corporate Governance</span>
+        <h2 class="text-3xl sm:text-4xl font-display font-bold text-nt-green uppercase tracking-tight">
+          Executive Leadership
+        </h2>
+        <p class="text-sm text-nt-muted mt-3">
+          51% Indigenous majority control embedded directly into the company’s corporate constitution, paired with commercial project execution.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <!-- Johnathan Ah Chee -->
-        <div class="bg-white rounded-xl border border-nt-charcoal/10 p-8 flex flex-col items-center text-center shadow-sm">
-          <div class="w-32 h-32 rounded-full bg-nt-canvas border-2 border-nt-rust/30 flex items-center justify-center mb-6 relative overflow-hidden">
-            <svg class="w-24 h-24 text-nt-charcoal/40 translate-y-3" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <div class="p-8 rounded-xl border border-nt-border bg-nt-canvas flex flex-col items-center text-center">
+          <div class="w-28 h-28 rounded-full bg-white border-2 border-nt-rust/40 flex items-center justify-center mb-6 shadow-inner relative overflow-hidden">
+            <svg class="w-20 h-20 text-nt-charcoal/30 translate-y-2" fill="currentColor" viewBox="0 0 24 24">
               <path fill-rule="evenodd" d="M12 2a5 5 0 100 10 5 5 0 000-10zM4 21c0-4.418 3.582-8 8-8s8 3.582 8 8H4z" clip-rule="evenodd" />
             </svg>
           </div>
-          <h3 class="text-lg font-bold text-nt-green">Johnathan Ah Chee</h3>
-          <p class="text-xs font-semibold text-nt-rust mt-1 uppercase tracking-wide">Managing Director &bull; Indigenous &amp; Technical Lead</p>
-          <span class="text-[11px] font-medium text-nt-green bg-nt-green/10 border border-nt-green/20 px-3 py-0.5 rounded-full mt-2 mb-4">
-            51% Shareholder &bull; Indigenous Lead
+          <h3 class="font-display font-bold text-lg text-nt-green uppercase">Johnathan Ah Chee</h3>
+          <p class="text-xs font-mono font-bold text-nt-rust mt-1 uppercase">Managing Director &bull; Indigenous Lead</p>
+          <span class="text-[10px] font-mono px-3 py-0.5 rounded-full bg-nt-green/10 text-nt-green font-bold mt-2 mb-4">
+            51% SHAREHOLDER &bull; INDIGENOUS CONTROL
           </span>
           <p class="text-xs text-nt-muted leading-relaxed text-left mt-2">
-            Leads Indigenous cultural governance, Traditional Owner agreements, and technical data collection direction. Connects operations across academic institutions, Parks, conservation agencies, and community networks throughout the NT.
+            Leads cultural governance, Traditional Owner relationships, and technical operational direction. Brings extensive networks across academic research, Parks, conservation agencies, and community groups across the NT.
           </p>
         </div>
 
         <!-- Mark McLean -->
-        <div class="bg-white rounded-xl border border-nt-charcoal/10 p-8 flex flex-col items-center text-center shadow-sm">
-          <div class="w-32 h-32 rounded-full bg-nt-canvas border-2 border-nt-green/30 flex items-center justify-center mb-6 relative overflow-hidden">
-            <svg class="w-24 h-24 text-nt-charcoal/40 translate-y-3" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <div class="p-8 rounded-xl border border-nt-border bg-nt-canvas flex flex-col items-center text-center">
+          <div class="w-28 h-28 rounded-full bg-white border-2 border-nt-green/40 flex items-center justify-center mb-6 shadow-inner relative overflow-hidden">
+            <svg class="w-20 h-20 text-nt-charcoal/30 translate-y-2" fill="currentColor" viewBox="0 0 24 24">
               <path fill-rule="evenodd" d="M12 2a5 5 0 100 10 5 5 0 000-10zM4 21c0-4.418 3.582-8 8-8s8 3.582 8 8H4z" clip-rule="evenodd" />
             </svg>
           </div>
-          <h3 class="text-lg font-bold text-nt-green">Mark McLean</h3>
-          <p class="text-xs font-semibold text-nt-charcoal mt-1 uppercase tracking-wide">Director &bull; Operations &amp; Program Lead</p>
-          <span class="text-[11px] font-medium text-nt-charcoal/80 bg-nt-charcoal/5 border border-nt-charcoal/10 px-3 py-0.5 rounded-full mt-2 mb-4">
-            49% Founding Shareholder
+          <h3 class="font-display font-bold text-lg text-nt-green uppercase">Mark McLean</h3>
+          <p class="text-xs font-mono font-bold text-nt-charcoal mt-1 uppercase">Director &bull; Operations &amp; Program Lead</p>
+          <span class="text-[10px] font-mono px-3 py-0.5 rounded-full bg-stone-200 text-stone-700 font-bold mt-2 mb-4">
+            49% FOUNDING SHAREHOLDER
           </span>
           <p class="text-xs text-nt-muted leading-relaxed text-left mt-2">
-            Directs project management, tender costing, scheduling, equipment readiness, QA/QC standards, and flight operations. Leads delivery integration and mobilisations across remote Northern Territory environments.
+            Directs flight operations, project management, tender costing, scheduling, equipment readiness, and QA/QC standards. Leads delivery integration and mobilisations across remote Northern Territory environments.
           </p>
         </div>
 
         <!-- John Avenell -->
-        <div class="bg-white rounded-xl border border-nt-charcoal/10 p-8 flex flex-col items-center text-center shadow-sm">
-          <div class="w-32 h-32 rounded-full bg-nt-canvas border-2 border-nt-ochre/40 flex items-center justify-center mb-6 relative overflow-hidden">
-            <svg class="w-24 h-24 text-nt-charcoal/40 translate-y-3" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <div class="p-8 rounded-xl border border-nt-border bg-nt-canvas flex flex-col items-center text-center">
+          <div class="w-28 h-28 rounded-full bg-white border-2 border-nt-ochredark/40 flex items-center justify-center mb-6 shadow-inner relative overflow-hidden">
+            <svg class="w-20 h-20 text-nt-charcoal/30 translate-y-2" fill="currentColor" viewBox="0 0 24 24">
               <path fill-rule="evenodd" d="M12 2a5 5 0 100 10 5 5 0 000-10zM4 21c0-4.418 3.582-8 8-8s8 3.582 8 8H4z" clip-rule="evenodd" />
             </svg>
           </div>
-          <h3 class="text-lg font-bold text-nt-green">John Avenell</h3>
-          <p class="text-xs font-semibold text-nt-ochredark mt-1 uppercase tracking-wide">Founder &bull; Commercial &amp; Growth Lead</p>
-          <span class="text-[11px] font-medium text-nt-charcoal/80 bg-nt-charcoal/5 border border-nt-charcoal/10 px-3 py-0.5 rounded-full mt-2 mb-4">
-            Commercial Lead
+          <h3 class="font-display font-bold text-lg text-nt-green uppercase">John Avenell</h3>
+          <p class="text-xs font-mono font-bold text-nt-ochredark mt-1 uppercase">Founder &bull; Commercial Lead</p>
+          <span class="text-[10px] font-mono px-3 py-0.5 rounded-full bg-stone-200 text-stone-700 font-bold mt-2 mb-4">
+            COMMERCIAL &amp; GROWTH
           </span>
           <p class="text-xs text-nt-muted leading-relaxed text-left mt-2">
             Drives commercial strategy, stakeholder partnerships, and regional growth through business networks, including engagement across the Northern Territory Chamber of Commerce.
           </p>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- Technical Standards & Security Readiness -->
-  <section id="specifications" class="py-16 bg-white border-b border-nt-charcoal/10">
+  <!-- Technical Assurance & Sovereign Infrastructure -->
+  <section id="specifications" class="py-16 bg-nt-canvas border-b border-nt-border">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="p-8 sm:p-12 rounded-2xl bg-nt-green text-white relative overflow-hidden">
-        <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <div class="bg-nt-charcoal text-white rounded-xl p-8 sm:p-12">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div class="lg:col-span-8">
-            <span class="text-xs uppercase tracking-widest font-mono text-nt-spinifex font-bold block mb-2">Technical Assurance</span>
-            <h3 class="text-2xl sm:text-3xl font-display font-bold mb-4">Sovereign Data Handling &amp; Defence Readiness</h3>
-            <p class="text-sm text-white/80 leading-relaxed font-light">
+            <span class="text-xs font-mono uppercase tracking-widest text-emerald-400 font-bold block mb-2">
+              Cyber &amp; Defence Readiness
+            </span>
+            <h3 class="text-2xl sm:text-3xl font-display font-bold uppercase mb-4">
+              100% Onshore Australian Data Custody
+            </h3>
+            <p class="text-xs text-white/70 leading-relaxed font-light max-w-2xl">
               First Geospatial processes all client datasets inside Australian-controlled, encrypted infrastructure. We are actively establishing pathways aligned with the Defence Industry Security Program (DISP) and Essential Eight cybersecurity baselines to support sensitive cultural, infrastructure, and government supply chains.
             </p>
           </div>
-          <div class="lg:col-span-4 grid grid-cols-2 gap-3 text-xs font-mono">
-            <div class="p-3 bg-white/10 rounded border border-white/15">
-              <span class="block text-nt-spinifex font-bold">GDA2020 / AHD</span>
-              Geodetic Coordinates
+          <div class="lg:col-span-4 grid grid-cols-2 gap-3 font-mono text-xs">
+            <div class="p-3 bg-white/5 rounded border border-white/10">
+              <span class="block text-nt-spinifex font-bold">GDA2020</span>
+              National Geodesy
             </div>
-            <div class="p-3 bg-white/10 rounded border border-white/15">
-              <span class="block text-nt-spinifex font-bold">100% Onshore</span>
-              Australian Storage
-            </div>
-            <div class="p-3 bg-white/10 rounded border border-white/15">
-              <span class="block text-nt-spinifex font-bold">CASA ReOC</span>
-              Regulatory Standard
-            </div>
-            <div class="p-3 bg-white/10 rounded border border-white/15">
+            <div class="p-3 bg-white/5 rounded border border-white/10">
               <span class="block text-nt-spinifex font-bold">DISP Pathway</span>
               Security Aligned
+            </div>
+            <div class="p-3 bg-white/5 rounded border border-white/10">
+              <span class="block text-nt-spinifex font-bold">AES-256</span>
+              Encrypted Vault
+            </div>
+            <div class="p-3 bg-white/5 rounded border border-white/10">
+              <span class="block text-nt-spinifex font-bold">Zero Offshore</span>
+              Local Processing
             </div>
           </div>
         </div>
@@ -526,119 +574,158 @@
     </div>
   </section>
 
-  <!-- Enterprise Contact / Lead Capture Section -->
-  <section id="contact" class="py-20 bg-nt-canvas topo-pattern">
+  <!-- Project Intake Form -->
+  <section id="contact" class="py-24 bg-white">
     <div class="max-w-4xl mx-auto px-6">
-      
-      <div class="text-center mb-12">
-        <span class="text-xs font-bold uppercase tracking-widest text-nt-rust block mb-2">Commence Engagement</span>
-        <h2 class="text-3xl sm:text-4xl font-display font-bold text-nt-green">Commission a Spatial Project</h2>
-        <p class="text-nt-muted text-sm mt-3">Submit your project scope, target coordinates, or tender requirements directly to our Northern Territory operations team.</p>
+      <div class="text-center mb-14">
+        <span class="text-xs font-mono font-bold uppercase tracking-widest text-nt-rust block mb-2">Project Commissioning</span>
+        <h2 class="text-3xl sm:text-4xl font-display font-bold text-nt-green uppercase tracking-tight">
+          Request Survey Briefing &amp; Quote
+        </h2>
+        <p class="text-xs text-nt-muted mt-2">
+          Submit target project boundaries, required deliverables, or tender packages directly to our Northern Territory operations team.
+        </p>
       </div>
 
-      <div class="bg-white rounded-2xl border border-nt-charcoal/10 p-8 sm:p-12 shadow-md">
-        <form class="space-y-6" onsubmit="event.preventDefault(); alert('Inquiry submitted. Our operations team will respond within 1 business day.');">
-          
+      <div class="bg-nt-canvas rounded-xl border border-nt-border p-8 sm:p-12">
+        <form class="space-y-6" onsubmit="event.preventDefault(); alert('Survey brief received. Our team will review and respond within 24 hours.');">
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
-              <label class="block text-xs font-bold uppercase tracking-wider text-nt-charcoal mb-2">Your Name *</label>
-              <input type="text" required placeholder="e.g. David Miller" class="w-full text-sm px-4 py-3 rounded-md bg-nt-canvas border border-nt-charcoal/20 focus:outline-none focus:border-nt-green text-nt-charcoal" />
+              <label class="block text-xs font-mono font-bold uppercase text-nt-charcoal mb-2">Contact Name *</label>
+              <input type="text" required placeholder="e.g. David Miller" class="w-full text-xs px-4 py-3 rounded bg-white border border-nt-border focus:outline-none focus:border-nt-green text-nt-charcoal" />
             </div>
             <div>
-              <label class="block text-xs font-bold uppercase tracking-wider text-nt-charcoal mb-2">Work Email *</label>
-              <input type="email" required placeholder="name@organisation.com.au" class="w-full text-sm px-4 py-3 rounded-md bg-nt-canvas border border-nt-charcoal/20 focus:outline-none focus:border-nt-green text-nt-charcoal" />
+              <label class="block text-xs font-mono font-bold uppercase text-nt-charcoal mb-2">Work Email *</label>
+              <input type="email" required placeholder="name@organisation.com.au" class="w-full text-xs px-4 py-3 rounded bg-white border border-nt-border focus:outline-none focus:border-nt-green text-nt-charcoal" />
             </div>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
-              <label class="block text-xs font-bold uppercase tracking-wider text-nt-charcoal mb-2">Company / Agency *</label>
-              <input type="text" required placeholder="e.g. NT Land Council / Mining / Dept." class="w-full text-sm px-4 py-3 rounded-md bg-nt-canvas border border-nt-charcoal/20 focus:outline-none focus:border-nt-green text-nt-charcoal" />
+              <label class="block text-xs font-mono font-bold uppercase text-nt-charcoal mb-2">Organisation / Entity *</label>
+              <input type="text" required placeholder="e.g. Land Council / Mining Corp / Dept." class="w-full text-xs px-4 py-3 rounded bg-white border border-nt-border focus:outline-none focus:border-nt-green text-nt-charcoal" />
             </div>
             <div>
-              <label class="block text-xs font-bold uppercase tracking-wider text-nt-charcoal mb-2">Industry Sector *</label>
-              <select class="w-full text-sm px-4 py-3 rounded-md bg-nt-canvas border border-nt-charcoal/20 focus:outline-none focus:border-nt-green text-nt-charcoal">
+              <label class="block text-xs font-mono font-bold uppercase text-nt-charcoal mb-2">Sector / Industry *</label>
+              <select class="w-full text-xs px-4 py-3 rounded bg-white border border-nt-border focus:outline-none focus:border-nt-green text-nt-charcoal">
                 <option>Traditional Owner / Land Council</option>
-                <option>Environmental &amp; Academic Research</option>
-                <option>Government / Parks &amp; Wildlife</option>
-                <option>Resources &amp; Mining</option>
-                <option>Civil Infrastructure &amp; Engineering</option>
-                <option>Pastoral &amp; Agriculture</option>
+                <option>Academic &amp; Environmental Research</option>
+                <option>Government / Civil Infrastructure</option>
+                <option>Resources &amp; Mining Operations</option>
+                <option>Pastoral &amp; Agricultural Land</option>
               </select>
             </div>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
-              <label class="block text-xs font-bold uppercase tracking-wider text-nt-charcoal mb-2">Estimated Survey Area</label>
-              <select class="w-full text-sm px-4 py-3 rounded-md bg-nt-canvas border border-nt-charcoal/20 focus:outline-none focus:border-nt-green text-nt-charcoal">
+              <label class="block text-xs font-mono font-bold uppercase text-nt-charcoal mb-2">Survey Area Extent</label>
+              <select class="w-full text-xs px-4 py-3 rounded bg-white border border-nt-border focus:outline-none focus:border-nt-green text-nt-charcoal">
                 <option>Site Specific (&lt; 100 hectares)</option>
-                <option>Corridor Alignment (10 – 50 km)</option>
-                <option>Broad Area (100 – 5,000 hectares)</option>
-                <option>Regional Survey (&gt; 5,000 hectares)</option>
+                <option>Linear Corridor (10 – 50 km)</option>
+                <option>Broad Scale (100 – 5,000 hectares)</option>
+                <option>Regional Mapping (&gt; 5,000 hectares)</option>
               </select>
             </div>
             <div>
-              <label class="block text-xs font-bold uppercase tracking-wider text-nt-charcoal mb-2">Attach Boundary / Project Brief (Optional)</label>
-              <input type="file" class="w-full text-xs px-3 py-2.5 rounded-md bg-nt-canvas border border-nt-charcoal/20 text-nt-muted file:mr-4 file:py-1 file:px-3 file:rounded file:border-0 file:text-xs file:font-semibold file:bg-nt-green file:text-white hover:file:bg-nt-greenlight" />
+              <label class="block text-xs font-mono font-bold uppercase text-nt-charcoal mb-2">Boundary / Scope File (KML / Shapefile / PDF)</label>
+              <input type="file" class="w-full text-xs px-3 py-2 rounded bg-white border border-nt-border text-nt-muted file:mr-3 file:py-1 file:px-2.5 file:rounded file:border-0 file:text-xs file:font-semibold file:bg-nt-green file:text-white" />
             </div>
           </div>
 
           <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-nt-charcoal mb-2">Project Requirements &amp; Target Geography *</label>
-            <textarea rows="4" required placeholder="Describe target deliverables (e.g. Airborne LiDAR point cloud, orthomosaic, DTM) and location (e.g. Katherine region, Top End)..." class="w-full text-sm px-4 py-3 rounded-md bg-nt-canvas border border-nt-charcoal/20 focus:outline-none focus:border-nt-green text-nt-charcoal"></textarea>
+            <label class="block text-xs font-mono font-bold uppercase text-nt-charcoal mb-2">Target Spatial Deliverables *</label>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+              <label class="flex items-center gap-2 p-2.5 rounded bg-white border border-nt-border cursor-pointer">
+                <input type="checkbox" checked class="accent-nt-rust" /> LiDAR Point Cloud (.LAS)
+              </label>
+              <label class="flex items-center gap-2 p-2.5 rounded bg-white border border-nt-border cursor-pointer">
+                <input type="checkbox" checked class="accent-nt-rust" /> Orthophoto (GeoTIFF)
+              </label>
+              <label class="flex items-center gap-2 p-2.5 rounded bg-white border border-nt-border cursor-pointer">
+                <input type="checkbox" class="accent-nt-rust" /> Bare-Earth DTM
+              </label>
+              <label class="flex items-center gap-2 p-2.5 rounded bg-white border border-nt-border cursor-pointer">
+                <input type="checkbox" class="accent-nt-rust" /> 3D Reality Mesh
+              </label>
+            </div>
           </div>
 
-          <button type="submit" class="w-full py-4 rounded-md bg-nt-rust hover:bg-nt-rust/95 text-white font-bold text-sm tracking-wide uppercase transition shadow-md shadow-nt-rust/20">
-            Submit Survey Briefing Request
+          <div>
+            <label class="block text-xs font-mono font-bold uppercase text-nt-charcoal mb-2">Project Brief &amp; Location Details *</label>
+            <textarea rows="4" required placeholder="Describe target project location (e.g. Katherine region, East Arnhem, Barkly), timeline, and required outputs..." class="w-full text-xs px-4 py-3 rounded bg-white border border-nt-border focus:outline-none focus:border-nt-green text-nt-charcoal"></textarea>
+          </div>
+
+          <button type="submit" class="w-full py-4 rounded bg-nt-rust hover:bg-nt-rusthover text-white font-bold text-xs uppercase tracking-wider transition shadow-md">
+            Transmit Project Scope to Operations
           </button>
         </form>
       </div>
-
     </div>
   </section>
 
-  <!-- Global Trust Footprint -->
-  <footer class="bg-nt-green text-white/80 py-16 border-t border-nt-greenlight">
+  <!-- Technical Footer -->
+  <footer class="bg-nt-green text-white py-16 border-t border-nt-greenlight">
     <div class="max-w-7xl mx-auto px-6">
-      
       <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-white/10">
-        
         <div class="md:col-span-2">
           <span class="font-display font-bold text-xl uppercase tracking-wider text-white block mb-2">First Geospatial Pty Ltd</span>
-          <p class="text-xs text-white/70 max-w-sm leading-relaxed mb-4">
-            Majority Indigenous-owned and controlled Northern Australian geospatial enterprise. Specialising in enterprise airborne LiDAR, photogrammetric reality capture, and culturally sovereign spatial intelligence.
+          <p class="text-xs text-white/70 max-w-sm leading-relaxed mb-4 font-light">
+            Indigenous-owned and controlled Northern Australian geospatial capability specialising in enterprise airborne LiDAR, high-resolution photogrammetry, and decision-ready spatial intelligence.
           </p>
-          <span class="inline-block text-[11px] font-bold px-3 py-1 rounded bg-nt-spinifex/20 text-nt-spinifex border border-nt-spinifex/30">
-            Certified Majority Indigenous Enterprise &bull; 51% Owned
+          <span class="inline-block text-[10px] font-mono font-bold px-3 py-1 rounded bg-nt-spinifex/20 text-nt-spinifex border border-nt-spinifex/30">
+            51% INDIGENOUS OWNED &bull; NORTHERN TERRITORY
           </span>
         </div>
 
         <div>
-          <span class="text-xs font-bold uppercase tracking-widest text-nt-spinifex block mb-3">Operational Bases</span>
+          <span class="text-xs font-mono font-bold uppercase tracking-widest text-nt-spinifex block mb-3">Field Bases</span>
           <p class="text-sm font-semibold text-white">Darwin &amp; Katherine, NT</p>
-          <p class="text-xs text-white/70 mt-1">Field teams deploying Territory-wide, Central Australia, and remote cross-border regions.</p>
+          <p class="text-xs text-white/70 mt-1 font-light">Deploying across all Northern Territory regions and Central Australia.</p>
         </div>
 
         <div>
-          <span class="text-xs font-bold uppercase tracking-widest text-nt-spinifex block mb-3">Direct Contact</span>
+          <span class="text-xs font-mono font-bold uppercase tracking-widest text-nt-spinifex block mb-3">Direct Inquiries</span>
           <p class="text-sm font-semibold text-white">contact@firstgeospatial.com.au</p>
-          <p class="text-xs text-white/70 mt-1">Inquiries, capability statements, and academic research collaborations.</p>
+          <p class="text-xs text-white/70 mt-1 font-light">Tender briefings, research joint ventures, and flight mobilisations.</p>
         </div>
-
       </div>
 
-      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/60">
-        <p>&copy; 2026 First Geospatial Pty Ltd. All rights reserved. Australian Proprietary Limited Company.</p>
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-white/50">
+        <p>&copy; 2026 First Geospatial Pty Ltd. All rights reserved.</p>
         <div class="flex items-center space-x-6">
-          <span>ABN: <i>Registered on Incorporation</i></span>
-          <span>CASA RPAS Regulated</span>
-          <span>DISP Aligned</span>
+          <span>GDA2020 / AHD</span>
+          <span>CASA RPAS</span>
+          <span>DISP READINESS</span>
         </div>
       </div>
-
     </div>
   </footer>
+
+  <!-- Script for HUD Toggle Demonstration -->
+  <script>
+    const btnRgb = document.getElementById('btnRgb');
+    const btnDtm = document.getElementById('btnDtm');
+    const viewImage = document.getElementById('viewImage');
+    const hudTitle = document.getElementById('hudTitle');
+    const hudDesc = document.getElementById('hudDesc');
+
+    btnRgb.addEventListener('click', () => {
+      btnRgb.className = 'px-3 py-1 bg-nt-rust text-white font-bold rounded text-[11px]';
+      btnDtm.className = 'px-3 py-1 bg-stone-800 text-stone-300 hover:text-white font-bold rounded text-[11px]';
+      viewImage.className = 'w-full h-full object-cover filter contrast-125 transition-all duration-500';
+      hudTitle.innerText = 'Photogrammetric High-Res Surface';
+      hudDesc.innerText = 'Resolving micro-fractures, rock strata, and vegetative condition at sub-centimetre accuracy.';
+    });
+
+    btnDtm.addEventListener('click', () => {
+      btnDtm.className = 'px-3 py-1 bg-nt-rust text-white font-bold rounded text-[11px]';
+      btnRgb.className = 'px-3 py-1 bg-stone-800 text-stone-300 hover:text-white font-bold rounded text-[11px]';
+      viewImage.className = 'w-full h-full object-cover filter hue-rotate-90 brightness-90 contrast-200 transition-all duration-500';
+      hudTitle.innerText = 'Classified Bare-Earth DTM (Ground Return)';
+      hudDesc.innerText = 'Stripping dense monsoonal vegetation to compute true hydraulic pathways and underlying geology.';
+    });
+  </script>
 
 </body>
 </html>
