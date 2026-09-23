@@ -1,0 +1,10 @@
+{
+  "name": "first-geospatial",
+  "private": true,
+  "version": "1.0.0",
+  "description": "First Geospatial marketing site — static HTML/CSS/JS, no build step.",
+  "scripts": {
+    "dev": "npx --yes serve public -l 3000",
+    "start": "npx --yes serve public -l 3000"
+  }
+}
