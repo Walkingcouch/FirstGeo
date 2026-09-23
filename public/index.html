@@ -23,21 +23,6 @@
 </head>
 
 <body id="top">
-
-  <!-- ============ PASSWORD GATE OVERLAY ============ -->
-  <div id="fg-gate" style="position:fixed;inset:0;width:100vw;height:100vh;background-color:#10151B;display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;padding:1rem;box-sizing:border-box;">
-    <div style="background:#1A232E;border:1px solid #2B3847;padding:2.5rem 2rem;border-radius:12px;max-width:380px;width:100%;text-align:center;box-shadow:0 20px 40px rgba(0,0,0,0.6);box-sizing:border-box;">
-      <h2 style="color:#FAF8F5;margin:0 0 0.5rem;font-size:1.4rem;">First Geospatial</h2>
-      <p style="color:#A0AEC0;font-size:0.875rem;margin:0 0 1.5rem;line-height:1.4;">Site under development. Please enter the password to view.</p>
-      <form id="fg-gate-form">
-        <input type="password" id="fg-gate-pass" placeholder="Enter password" required style="width:100%;padding:0.75rem;border-radius:6px;border:1px solid #2B3847;background:#10151B;color:#FAF8F5;font-size:1rem;margin-bottom:0.75rem;box-sizing:border-box;outline:none;" />
-        <p id="fg-gate-err" style="color:#E53E3E;font-size:0.85rem;margin:0 0 0.75rem;display:none;">Incorrect password</p>
-        <button type="submit" style="width:100%;padding:0.75rem;border-radius:6px;border:none;background:#A24823;color:#FFF;font-weight:600;font-size:1rem;cursor:pointer;">Unlock</button>
-      </form>
-    </div>
-  </div>
-  <!-- ============================================== -->
-
   <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- ============ ICON SPRITE (inline so it works from file:// and any host) ============ -->
@@ -240,32 +225,5 @@
       <span class="pipes"><span>People</span><i></i><span>Place</span><i></i><span>Possibilities</span></span>
     </div>
   </footer>
-
-  <!-- ============ PASSWORD GATE SCRIPT ============ -->
-  <script>
-    (function () {
-      const SITE_PASSWORD = "SkyHigh2026"; // <-- CHANGE YOUR PASSWORD HERE
-      const gate = document.getElementById("fg-gate");
-      const form = document.getElementById("fg-gate-form");
-      const pass = document.getElementById("fg-gate-pass");
-      const err = document.getElementById("fg-gate-err");
-
-      if (sessionStorage.getItem("fg_unlocked") === "true") {
-        gate.style.display = "none";
-      }
-
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        if (pass.value === SITE_PASSWORD) {
-          sessionStorage.setItem("fg_unlocked", "true");
-          gate.style.display = "none";
-        } else {
-          err.style.display = "block";
-          pass.value = "";
-          pass.focus();
-        }
-      });
-    })();
-  </script>
 </body>
 </html>
