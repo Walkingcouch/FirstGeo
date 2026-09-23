@@ -1,7 +1,0 @@
-{
-  "liveServer.settings.root": "/public",
-  "files.associations": { "*.css": "css" },
-  "editor.formatOnSave": true,
-  "css.validate": true,
-  "html.format.wrapLineLength": 120
-}

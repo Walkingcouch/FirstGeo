@@ -32,9 +32,118 @@
         linear-gradient(to right, rgba(11, 60, 38, 0.04) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(11, 60, 38, 0.04) 1px, transparent 1px);
     }
+
+    /* Password Gate Styles */
+    #password-gate {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #FAF8F5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999999;
+      padding: 1.5rem;
+    }
+    .gate-card {
+      background-color: #FFFFFF;
+      border: 1px solid #EAE6DC;
+      padding: 2.5rem 2rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 20px 25px -5px rgba(11, 60, 38, 0.08), 0 8px 10px -6px rgba(11, 60, 38, 0.04);
+      width: 100%;
+      max-width: 420px;
+      text-align: center;
+    }
+    .gate-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background-color: rgba(233, 216, 166, 0.5);
+      color: #0B3C26;
+      border: 1px solid rgba(212, 163, 115, 0.4);
+      margin-bottom: 1.25rem;
+    }
+    .gate-input {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border-radius: 0.75rem;
+      border: 1px solid #EAE6DC;
+      background-color: #FAF8F5;
+      color: #222220;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .gate-input:focus {
+      border-color: #A24823;
+    }
+    .gate-error {
+      color: #A24823;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      display: none;
+    }
+    .gate-button {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border-radius: 0.75rem;
+      border: none;
+      background-color: #A24823;
+      color: #FFFFFF;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 4px 6px -1px rgba(162, 72, 35, 0.3);
+      transition: opacity 0.2s, transform 0.1s;
+    }
+    .gate-button:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
+    }
   </style>
 </head>
 <body class="font-sans antialiased selection:bg-[#A24823] selection:text-white" style="background-color: #FAF8F5; color: #222220;">
+
+  <!-- ================= PASSWORD GATE OVERLAY ================= -->
+  <div id="password-gate">
+    <div class="gate-card">
+      <div class="w-12 h-12 rounded-xl flex items-center justify-center font-black text-xl shadow-md mx-auto mb-4" style="background-color: #0B3C26; color: #E9D8A6;">
+        FG
+      </div>
+      <div class="gate-badge">
+        <span class="w-2 h-2 rounded-full inline-block" style="background-color: #A24823;"></span>
+        Under Development
+      </div>
+      <h2 class="text-2xl font-extrabold mb-2" style="color: #0B3C26;">First Geospatial</h2>
+      <p class="text-sm leading-relaxed mb-6" style="color: #63625C;">
+        This platform is currently restricted for client review and development. Please enter the access password to continue.
+      </p>
+      
+      <form id="gate-form">
+        <input 
+          type="password" 
+          id="gate-password" 
+          class="gate-input" 
+          placeholder="Enter access password" 
+          autocomplete="current-password"
+          required 
+        />
+        <div id="gate-error" class="gate-error">Incorrect password. Please try again.</div>
+        <button type="submit" class="gate-button">Unlock Site</button>
+      </form>
+    </div>
+  </div>
+  <!-- ========================================================= -->
 
   <!-- Top Announcement Bar -->
   <div class="py-2.5 px-6 text-center text-xs font-medium flex items-center justify-center gap-2 border-b border-[#135436]" style="background-color: #0B3C26; color: #FAF8F5;">
@@ -435,7 +544,7 @@
               </div>
             </div>
 
-            <div class="p-7 rounded-2xl border border-[#EAE6DC] flex items-start gap-4" style="background-color: #FAF8F5;">
+            <div class="p-7 rounded-2xl border border-[#EAE6DC] flex items-start gap-4" style="background-color: #A24823; color: #FFFFFF;">
               <div class="p-3 rounded-xl shrink-0" style="background-color: #A24823; color: #FFFFFF;">
                 <i data-lucide="users" class="w-6 h-6"></i>
               </div>
@@ -761,6 +870,36 @@
       <p class="text-[11px]">Indigenous Capability &bull; Country &bull; LiDAR &bull; Imaging</p>
     </div>
   </footer>
+
+  <!-- ================= PASSWORD GATE JAVASCRIPT ================= -->
+  <script>
+    (function () {
+      // Set your private development password here:
+      const SITE_PASSWORD = "SkyHigh2026";
+
+      const gate = document.getElementById("password-gate");
+      const form = document.getElementById("gate-form");
+      const passInput = document.getElementById("gate-password");
+      const errorMsg = document.getElementById("gate-error");
+
+      // Check if unlocked during current browser session
+      if (sessionStorage.getItem("fg_site_unlocked") === "true") {
+        gate.style.display = "none";
+      }
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (passInput.value === SITE_PASSWORD) {
+          sessionStorage.setItem("fg_site_unlocked", "true");
+          gate.style.display = "none";
+        } else {
+          errorMsg.style.display = "block";
+          passInput.value = "";
+          passInput.focus();
+        }
+      });
+    })();
+  </script>
 
   <script>
     lucide.createIcons();
