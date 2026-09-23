@@ -4,15 +4,22 @@ export function middleware(req: NextRequest) {
   const basicAuth = req.headers.get('authorization');
 
   if (basicAuth) {
-    const authValue = basicAuth.split(' ')[1];
-    const [user, pwd] = atob(authValue).split(':');
+    try {
+      const authValue = basicAuth.split(' ')[1];
+      if (authValue) {
+        // Safe decoding for Edge / Node runtimes
+        const decoded = atob(authValue);
+        const [user, pwd] = decoded.split(':');
 
-    // Replace with your preferred credentials or environment variables
-    const validUser = process.env.BASIC_AUTH_USER || 'admin';
-    const validPass = process.env.BASIC_AUTH_PASS || 'SkyHigh2026';
+        const validUser = process.env.BASIC_AUTH_USER || 'admin';
+        const validPass = process.env.BASIC_AUTH_PASS || 'SkyHigh2026';
 
-    if (user === validUser && pwd === validPass) {
-      return NextResponse.next();
+        if (user === validUser && pwd === validPass) {
+          return NextResponse.next();
+        }
+      }
+    } catch {
+      // If decoding fails, fall through to prompt credentials again
     }
   }
 
@@ -25,5 +32,14 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
+  matcher: [
+    /*
+     * Match all request paths except:
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     * - public folder files
+     */
+    '/((?!_next/static|_next/image|favicon.ico).*)',
+  ],
 };
